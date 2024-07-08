@@ -23,7 +23,6 @@ namespace DigitsNFCToolkit.Samples
 
         public async Task Show(params object[] args)
         {
-            panel.SetActive(true);
             MrzInputField.text = PassportScanValues.GetInstance().Model.MRZString;
             MrzInputField.onSubmit.AddListener(OnMrzSubmit);
         }
@@ -31,7 +30,6 @@ namespace DigitsNFCToolkit.Samples
         public async Task Hide()
         {
             MrzInputField.onSubmit.RemoveListener(OnMrzSubmit);
-            panel.SetActive(false);
         }
 
         private void OnMrzSubmit(string text)

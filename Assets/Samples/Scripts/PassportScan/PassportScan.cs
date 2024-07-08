@@ -152,14 +152,14 @@ s012345674UTO8704234F3208265<<<2
 
         private void SetResult(string result)
         {
-            Log(result);
+            //Log(result);
             if (string.IsNullOrEmpty(result))
             {
                 _tcs.SetResult(result);
                 return;
             }
             string mrz = MRZHelper.ExtractMRZ(result);
-            Log(mrz);
+            //Log(mrz);
             _tcs.SetResult(mrz);
         }
 

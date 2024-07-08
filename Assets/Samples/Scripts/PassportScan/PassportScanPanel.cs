@@ -31,7 +31,6 @@ namespace DigitsNFCToolkit.Samples
 
         public async Task Show()
         {
-            panel.SetActive(true);
             CancellationTokenSource = new CancellationTokenSource();
             RecognizeAsync(CancellationTokenSource.Token);
         }
@@ -41,8 +40,6 @@ namespace DigitsNFCToolkit.Samples
             CancellationTokenSource?.Cancel();
             CancellationTokenSource?.Dispose();
             CancellationTokenSource = null;
-
-            panel.SetActive(false);
         }
 
         private async void RecognizeAsync(CancellationToken cancellationToken)
@@ -50,9 +47,9 @@ namespace DigitsNFCToolkit.Samples
             webCamHelper.SetUp();
             await PassportScanValues.GetInstance().Model.Recognize(cancellationToken, webCamHelper);
             webCamHelper.stopCamera();
-            Debug.Log("MRZ: " + PassportScanValues.GetInstance().Model.MRZString);
-            panel.SetActive(false);
-            nextScreen.SetActive(true);
+            //Debug.Log("MRZ: " + PassportScanValues.GetInstance().Model.MRZString);
+            nextScreen.gameObject.SetActive(true);
+            panel.gameObject.SetActive(false);
         }
     }
 }

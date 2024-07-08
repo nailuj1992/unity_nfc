@@ -92,18 +92,18 @@ namespace DigitsNFCToolkit
             return maxDocumentNumber.ToString();
         }
 
-        public static char ParseGender(int gender)
+        public static string ParseGender(int gender)
         {
             switch (gender)
             {
                 case 1:
-                    return 'M';
+                    return "M";
                 case 2:
-                    return 'F';
+                    return "F";
                 case 0:
-                    return 'U';
+                    return "U";
                 default:
-                    return '-';
+                    return "-";
             }
         }
 

@@ -45,6 +45,7 @@ namespace DigitsNFCToolkit.Samples
         [SerializeField] private GameObject readScreenGO;
         [SerializeField] private GameObject backgroundScreenGO;
         [SerializeField] private GameObject finalScreenGO;
+        [SerializeField] private GameObject showInfoScreenGO;
 
         private void Awake()
 		{
@@ -119,27 +120,28 @@ namespace DigitsNFCToolkit.Samples
 				JSONObject passportInfo = scanPassport.GetPassportInfo();
 				if (passportInfo != null)
 				{
-                    PlayerPrefs.SetString("firstName", passportInfo["personalInfo"].Object["secondaryIdentifier"].ToString());
-                    PlayerPrefs.SetString("lastName", passportInfo["personalInfo"].Object["primaryIdentifier"].ToString());
-                    PlayerPrefs.SetString("dateOfBirth", passportInfo["personalInfo"].Object["dateOfBirth"].ToString());
-                    PlayerPrefs.SetString("nationality", passportInfo["personalInfo"].Object["nationality"].ToString());
-                    PlayerPrefs.SetString("gender", passportInfo["personalInfo"].Object["gender"].ToString());
-                    PlayerPrefs.SetString("documentNumber", passportInfo["personalInfo"].Object["documentNumber"].ToString());
-                    PlayerPrefs.SetString("documentCode", passportInfo["personalInfo"].Object["documentCode"].ToString());
-                    PlayerPrefs.SetString("base64ImageFace", passportInfo["faceImage"].Object["base64ImageFace"].ToString());
+                    PlayerPrefs.SetString("firstName", passportInfo["personalInfo"].Object["secondaryIdentifier"].ToString().Replace("\"", ""));
+                    PlayerPrefs.SetString("lastName", passportInfo["personalInfo"].Object["primaryIdentifier"].ToString().Replace("\"", ""));
+                    PlayerPrefs.SetString("dateOfBirth", passportInfo["personalInfo"].Object["dateOfBirth"].ToString().Replace("\"", ""));
+                    PlayerPrefs.SetString("nationality", passportInfo["personalInfo"].Object["nationality"].ToString().Replace("\"", ""));
+                    PlayerPrefs.SetString("gender", passportInfo["personalInfo"].Object["gender"].ToString().Replace("\"", ""));
+                    PlayerPrefs.SetString("documentNumber", passportInfo["personalInfo"].Object["documentNumber"].ToString().Replace("\"", ""));
+                    PlayerPrefs.SetString("documentCode", passportInfo["personalInfo"].Object["documentCode"].ToString().Replace("\"", ""));
+                    PlayerPrefs.SetString("base64ImageFace", passportInfo["faceImage"].Object["base64ImageFace"].ToString().Replace("\"", ""));
 
-                    scanProcessPanel.SetActive(false);
-                    passportScanPanel.SetActive(false);
-                    correctPassportPanel.SetActive(false);
-                    introScreenGO.SetActive(false);
-                    backgroundScreenGO.SetActive(false);
-                    readScreenGO.SetActive(false);
-                    finalScreenGO.SetActive(true);
+                    finalScreenGO.gameObject.SetActive(true);
+                    introScreenGO.gameObject.SetActive(false);
+                    backgroundScreenGO.gameObject.SetActive(false);
+                    readScreenGO.gameObject.SetActive(false);
+                    showInfoScreenGO.gameObject.SetActive(false);
+                    scanProcessPanel.gameObject.SetActive(false);
+                    passportScanPanel.gameObject.SetActive(false);
+                    correctPassportPanel.gameObject.SetActive(false);
                 }
             }
             catch (Exception ex)
             {
-                Debug.LogException(ex);
+                Debug.Log(ex.Message);
             }
         }
 

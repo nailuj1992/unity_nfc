@@ -74,7 +74,7 @@ namespace DigitsNFCToolkit
             string secondaryIdentifier = mrzInfo.Call<string>("getSecondaryIdentifier").Replace("<", " ").Trim();
             string primaryIdentifier = mrzInfo.Call<string>("getPrimaryIdentifier").Replace("<", " ").Trim();
             string personalNumber = mrzInfo.Call<string>("getPersonalNumber");
-            char gender = MRZUtils.ParseGender(mrzInfo.Call<AndroidJavaObject>("getGender").Call<int>("toInt"));
+            string gender = MRZUtils.ParseGender(mrzInfo.Call<AndroidJavaObject>("getGender").Call<int>("toInt"));
             string dateOfBirth = MRZUtils.ConvertFromMrzDate(mrzInfo.Call<string>("getDateOfBirth"));
             string dateOfExpiry = MRZUtils.ConvertFromMrzDate(mrzInfo.Call<string>("getDateOfExpiry"));
             string documentNumber = mrzInfo.Call<string>("getDocumentNumber");

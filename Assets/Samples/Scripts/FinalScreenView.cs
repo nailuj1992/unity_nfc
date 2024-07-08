@@ -30,24 +30,18 @@ namespace DigitsNFCToolkit.Samples
                 string documentCode = PlayerPrefs.GetString("documentCode");
                 string base64ImageFace = PlayerPrefs.GetString("base64ImageFace");
 
-                char genderParsed = 'X';
-                if ("M".Equals(gender))
+                string genderParsed = "Unespecified";
+                if ("M".Equals(gender, StringComparison.CurrentCultureIgnoreCase))
                 {
-                    genderParsed = 'M';
+                    genderParsed = "Male";
                 }
-                else if ("F".Equals(gender))
+                else if ("F".Equals(gender, StringComparison.CurrentCultureIgnoreCase))
                 {
-                    genderParsed = 'F';
+                    genderParsed = "Female";
                 }
 
                 string document = documentCode + "-" + documentNumber;
 
-                Debug.Log("firstName: " + firstName);
-                Debug.Log("lastName: " + lastName);
-                Debug.Log("dateOfBirth: " + dateOfBirth);
-                Debug.Log("nationality: " + nationality);
-                Debug.Log("genderParsed: " + genderParsed.ToString());
-                Debug.Log("document: " + document);
                 Debug.Log("base64ImageFace: " + base64ImageFace);
 
                 // Purging unnecessary data from PlayerPrefs
@@ -59,18 +53,18 @@ namespace DigitsNFCToolkit.Samples
                 PlayerPrefs.SetString("gender", genderParsed.ToString());
                 PlayerPrefs.SetString("document", document);
 
-                scanProcessPanel.SetActive(false);
-                passportScanPanel.SetActive(false);
-                correctPassportPanel.SetActive(false);
+                nextScreen.gameObject.SetActive(true);
+                panel.gameObject.SetActive(false);
                 introScreenGO.gameObject.SetActive(false);
                 readScreenGO.gameObject.SetActive(false);
                 backgroundScreenGO.gameObject.SetActive(false);
-                panel.gameObject.SetActive(false);
-                //nextScreen.gameObject.SetActive(true);
+                scanProcessPanel.gameObject.SetActive(false);
+                passportScanPanel.gameObject.SetActive(false);
+                correctPassportPanel.gameObject.SetActive(false);
             }
             catch (Exception ex)
             {
-                Debug.LogException(ex);
+                Debug.Log(ex.Message);
             }
         }
     }
