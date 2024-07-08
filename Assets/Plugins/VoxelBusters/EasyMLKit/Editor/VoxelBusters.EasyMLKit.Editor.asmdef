@@ -1,0 +1,20 @@
+{
+    "name": "VoxelBusters.EasyMLKit.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:46ee17e5fcc7f436f9df354a1efda6a4",
+        "GUID:2e305d2a5092a465db2a72838d17a500",
+        "GUID:b1d6a8410dee4411a9301e4bbb5102af",
+        "GUID:77cdc4b9a869f4caa8b2e41e3b794af0",
+        "GUID:b26b55e8c8c3048eebf8103d71fd130c"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

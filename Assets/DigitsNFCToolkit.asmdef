@@ -1,0 +1,20 @@
+{
+    "name": "DigitsNFCToolkit",
+    "rootNamespace": "",
+    "references": [
+        "GUID:46ee17e5fcc7f436f9df354a1efda6a4",
+        "GUID:b1d6a8410dee4411a9301e4bbb5102af",
+        "GUID:77cdc4b9a869f4caa8b2e41e3b794af0",
+        "GUID:f712e8ae9bab041c2a043390d1a751a1",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

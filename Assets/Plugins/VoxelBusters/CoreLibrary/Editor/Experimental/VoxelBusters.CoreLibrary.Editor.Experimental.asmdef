@@ -1,0 +1,17 @@
+{
+    "name": "VoxelBusters.CoreLibrary.Editor.Experimental",
+    "references": [
+        "GUID:f712e8ae9bab041c2a043390d1a751a1"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

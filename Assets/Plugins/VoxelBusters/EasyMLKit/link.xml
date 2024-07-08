@@ -1,0 +1,6 @@
+﻿<linker>
+  <assembly fullname="VoxelBusters.EasyMLKit">
+    <namespace fullname="VoxelBusters.EasyMLKit.Implementations.Android" preserve="all" />
+    <namespace fullname="VoxelBusters.EasyMLKit.Implementations.Android.Internal" preserve="all" />
+  </assembly>
+</linker>
