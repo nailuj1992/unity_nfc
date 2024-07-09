@@ -40,7 +40,7 @@ namespace DigitsNFCToolkit.Samples
                     genderParsed = "Female";
                 }
 
-                string document = documentCode + "-" + documentNumber;
+                string document = documentCode + " - " + documentNumber;
 
                 // Purging unnecessary data from PlayerPrefs
                 PlayerPrefs.SetString("MRZInfo", null);
