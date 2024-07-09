@@ -128,6 +128,8 @@ namespace DigitsNFCToolkit.Samples
                     PlayerPrefs.SetString("documentNumber", passportInfo["personalInfo"].Object["documentNumber"].ToString().Replace("\"", ""));
                     PlayerPrefs.SetString("documentCode", passportInfo["personalInfo"].Object["documentCode"].ToString().Replace("\"", ""));
                     PlayerPrefs.SetString("base64ImageFace", passportInfo["faceImage"].Object["base64ImageFace"].ToString().Replace("\"", ""));
+                    PlayerPrefs.SetInt("widthImageFace", passportInfo["faceImage"].Object["widthImageFace"].Integer);
+                    PlayerPrefs.SetInt("heightImageFace", passportInfo["faceImage"].Object["heightImageFace"].Integer);
 
                     finalScreenGO.gameObject.SetActive(true);
                     introScreenGO.gameObject.SetActive(false);

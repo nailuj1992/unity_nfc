@@ -42,8 +42,6 @@ namespace DigitsNFCToolkit.Samples
 
                 string document = documentCode + "-" + documentNumber;
 
-                Debug.Log("base64ImageFace: " + base64ImageFace);
-
                 // Purging unnecessary data from PlayerPrefs
                 PlayerPrefs.SetString("MRZInfo", null);
                 PlayerPrefs.SetString("documentNumber", null);

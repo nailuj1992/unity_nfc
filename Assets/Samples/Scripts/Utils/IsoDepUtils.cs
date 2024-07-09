@@ -137,13 +137,49 @@ namespace DigitsNFCToolkit
                 AndroidJavaClass ImagesDecoder = new AndroidJavaClass("com.unity.images.ImagesDecoder");
                 AndroidJavaObject image = ImagesDecoder.CallStatic<AndroidJavaObject>("getImage", cacheDir, faceImageInfo);
 
-                // image.getBitmapImage();
-                // image.getBase64Image();
+                //int imageLength = faceImageInfo.Call<int>("getImageLength");
+                string mimeType = faceImageInfo.Call<string>("getMimeType");
+                string base64Image = image.Call<string>("getBase64Image");
+                byte[] byteBuffer = Convert.FromBase64String(base64Image);
 
-                string base64ImageFace = image.Call<string>("getBase64Image");
+                AndroidJavaObject infoDecoded = ImagesDecoder.CallStatic<AndroidJavaObject>("decodeImageJpeg2000", cacheDir, mimeType, byteBuffer);
+                int width = infoDecoded.Call<int>("getWidth");
+                int height = infoDecoded.Call<int>("getHeight");
+                int[] colors = infoDecoded.Call<int[]>("getColors");
+
+                // Prepare byte array for texture data
+                byte[] texData = new byte[width * height * 4]; // 4 bytes per pixel (RGBA)
+                for (int y = 0; y < height; y++)
+                {
+                    for (int x = 0; x < width; x++)
+                    {
+                        int i = (y * width + x) * 4;
+                        int flippedIndex = ((height - 1 - y) * width + x);
+                        Color32 color = IntToColor(colors[flippedIndex]);
+
+                        texData[i] = color.r;
+                        texData[i + 1] = color.g;
+                        texData[i + 2] = color.b;
+                        texData[i + 3] = color.a;
+                    }
+                }
+
+                string base64ImageFace = Convert.ToBase64String(texData);
                 resp.Add("base64ImageFace", base64ImageFace);
+                resp.Add("widthImageFace", width);
+                resp.Add("heightImageFace", height);
             }
             return resp;
+        }
+
+        // Helper method to convert int color to Color32
+        private Color32 IntToColor(int color)
+        {
+            byte a = (byte)((color >> 24) & 0xFF);
+            byte r = (byte)((color >> 16) & 0xFF);
+            byte g = (byte)((color >> 8) & 0xFF);
+            byte b = (byte)(color & 0xFF);
+            return new Color32(r, g, b, a);
         }
 
         public JSONObject GetAdditionalDetails(AndroidJavaObject service)
