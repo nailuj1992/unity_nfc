@@ -26,7 +26,7 @@ namespace DigitsNFCToolkit.Samples
                 return null;
             }
 
-            #if (!UNITY_EDITOR) && UNITY_ANDROID
+#if (!UNITY_EDITOR) && UNITY_ANDROID
             if (Tag.IsIsoDep())
             {
                 try
@@ -65,6 +65,8 @@ namespace DigitsNFCToolkit.Samples
                         { "faceImage", faceImage }
                     };
 
+                    isoDepUtils.CloseService(service);
+
                     return passportInfo;
                 }
                 catch (Exception ex)
@@ -73,7 +75,7 @@ namespace DigitsNFCToolkit.Samples
 
                 }
             }
-            #endif
+#endif
             return null;
         }
     }

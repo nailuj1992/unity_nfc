@@ -48,6 +48,18 @@ namespace DigitsNFCToolkit
             return service;
         }
 
+        public void CloseService(AndroidJavaObject service)
+        {
+            service.Call("close");
+
+            AndroidJavaClass CardService = new AndroidJavaClass("net.sf.scuba.smartcards.CardService");
+            AndroidJavaObject cardService = CardService.CallStatic<AndroidJavaObject>("getInstance", Dep);
+
+            cardService.Call("close");
+
+            Dep.Call("close");
+        }
+
         public void DoBACProcess(AndroidJavaObject service, string pnumber, string dateBirth, string expirationDate)
         {
             // service.sendSelectApplet(false);
