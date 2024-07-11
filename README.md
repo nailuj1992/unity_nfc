@@ -5,15 +5,21 @@ This module is done with the idea of implementing the passport scanning with NFC
 
 ### AAR files
 
-First of all, I included the next .AAR files in the directory \Assets\NFC\Plugins\Android. These files are in charge of carrying out the basic logic of scanning the passport chip, and they are written in Java (in fact, they should be Android library plugins, so Unity can recognize and execute them properly).
+First of all, I included the next .AAR files in the directory *\Assets\Plugins\Android*. These files are in charge of carrying out the basic logic of scanning the passport chip, and they are written in Java (in fact, they should be Android library plugins, so Unity can recognize and execute them properly).
 
 ![Screenshot 2024-07-03 145410](https://github.com/nailuj1992/unity_nfc/assets/14367140/56007b39-686d-4adb-ba6c-ed06498cdee5)
 
 From these 6 files, there is one of them which was lightly modified for this project, and another that was created from scratch.
 
+#### File *jmrtd-0.7.40.aar*
+
 The modified file is “*jmrtd-0.7.40.aar*”, and the only change that was made and compiled is located in **PassportService** class -a void method was added because C# has a little problem with methods that have something to return-.
 
 ![Screenshot 2024-07-03 150406](https://github.com/nailuj1992/unity_nfc/assets/14367140/d1ca3016-1724-43b4-888f-01151dda6016)
+
+The repository where the source code of this file is located over here: https://github.com/nailuj1992/JMRTD-Unity
+
+#### File *ImagesDecoder.aar*
 
 On the other side, the new file is named “*ImagesDecoder.aar*”, and it is a little project that contains some code to read and process the image that is obtained as an encoded string from the passport chip. That mini-project contains the next three classes: **ImagesDecoder**, **ImageJpeg2000Info**, and **Image**.
 
@@ -23,9 +29,15 @@ On the other side, the new file is named “*ImagesDecoder.aar*”, and it is a 
 
 ![Screenshot 2024-07-03 151026](https://github.com/nailuj1992/unity_nfc/assets/14367140/6d10e41e-2b22-4712-8fa3-8c2551536263)
 
+The repository where the source code of this file is located over here: https://github.com/nailuj1992/ImagesDecoder-Unity
+
+#### File *NativeNFC.aar*
+
 Finally, the second modified file is “*NativeNFC.aar*”, and the only change that was made and compiled is located in **NativeNFC** class -the methods *getLastTag()* and *getLastIntent()* were added because in the original file, these methods do not exist, and the method *getLastTag()* is especially needed for the proper functioning of this NFC scan module-.
 
 ![image](https://github.com/nailuj1992/unity_nfc/assets/14367140/daf91c34-f485-4374-8dec-8d1db35f06d4)
+
+The repository where the source code of this file is located over here: https://github.com/nailuj1992/NativeNFC-Unity
 
 ## 2. NFC Extraction
 
