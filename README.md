@@ -1,5 +1,5 @@
 # Unity NFC Testing
-This module is done with the idea of implementing the passport scanning with NFC technology on Unity, and for Android devices only. This module was developed for the new social media project, owned by the organization called HELP US DEFEND.
+This module is done with the idea of implementing the passport scanning with NFC technology on Unity, and for Android devices only.
 
 ## 1. Previous notions
 
